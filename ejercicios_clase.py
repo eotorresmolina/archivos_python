@@ -23,12 +23,12 @@ def contar_lineas (nombre_archivo):
 
     cant_lineas = 0
     with open(nombre_archivo, 'r') as file:
-        line = file.readline( )
-        while line != '':   # Mientras la linea no esté vacía
+        while file.readline() != '':   # Mientras la linea no esté vacía
             cant_lineas += 1
 
-        # Otra Forma:
-        #for line
+        # Otra Forma Sería:
+        #for line in file:
+        #    cant_lineas += 1
 
     return cant_lineas
 
