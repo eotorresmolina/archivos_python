@@ -11,12 +11,26 @@ Programa creado para poner a prueba los conocimientos
 adquiridos durante la clase
 '''
 
-__author__ = "Inove Coding School"
-__email__ = "alumnos@inove.com.ar"
+__author__ = "Emmanuel Torres Molina"
+__email__ = "emmaotm@gmail.com"
 __version__ = "1.2"
 
 import csv
 import re
+
+
+def contar_lineas (nombre_archivo):
+
+    cant_lineas = 0
+    with open(nombre_archivo, 'r') as file:
+        line = file.readline( )
+        while line != '':   # Mientras la linea no esté vacía
+            cant_lineas += 1
+
+        # Otra Forma:
+        #for line
+
+    return cant_lineas
 
 
 def ej1():
@@ -35,6 +49,10 @@ def ej1():
     y cumpla el objetivo especificado, retornando la cantidad
     de líneas encontradas.
     '''
+
+    nombre_archivo = 'texto.txt'
+    cantidad_lineas = contar_lineas(nombre_archivo)
+    print('La Cantidad de Líneas que Posee el Archivo "{}" es: {}\n\n'.format(nombre_archivo, cantidad_lineas))
 
 
 def ej2():
@@ -137,7 +155,7 @@ def ej5():
 
 
 if __name__ == '__main__':
-    print("Bienvenidos a otra clase de Inove con Python")
+    print("\n\n\nBienvenidos a otra clase de Inove con Python:\n\n")
     ej1()
     #ej2()
     #ej3()
