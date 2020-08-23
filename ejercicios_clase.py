@@ -65,7 +65,7 @@ def ej2():
     El archivo abierto para lectura (fi) debe ser el archivo
     "notas.txt"
 
-    Debe leer "línea por línea" el archivo "nota.txt" y copiar
+    Debe leer "línea por línea" el archivo "notas.txt" y copiar
     "línea a línea" en el archivo para escritura (write)
 
     A su vez, mientras va escribiendo "línea a línea" debe
@@ -73,10 +73,18 @@ def ej2():
     al final del proceso el valor.
     '''
 
-    # fi = open('nota.txt', 'r')
-    # fo = open(.......)
+    cant_lineas = 0
+    fi = open('notas.txt', 'r')
+    fo = open('copia_notas.txt', 'w')
 
-    # Recuerde cerrar los archivos al final ;)
+    for line in fi:
+        fo.writelines(line)
+        #fo.write(line)     # Otra Forma
+        cant_lineas += 1
+
+    fi.close()
+    fo.close()
+    print('La Cantidad de Lineas que se Copiaron es: {}\n\n'.format(cant_lineas))
 
 
 def ej3():
@@ -156,8 +164,8 @@ def ej5():
 
 if __name__ == '__main__':
     print("\n\n\nBienvenidos a otra clase de Inove con Python:\n\n")
-    ej1()
-    #ej2()
+    #ej1()
+    ej2()
     #ej3()
     #ej4()
     #ej5()
