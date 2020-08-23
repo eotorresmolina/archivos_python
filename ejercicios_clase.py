@@ -90,13 +90,28 @@ def ej2():
 def ej3():
     # Ejercicios con archivos CSV
     archivo = 'propiedades.csv'
+    cantidad_filas = 0
+    cant_dpto_2ambientes = 0
+    cant_dpto_3ambientes = 0
     '''
     Realice un programa que abra el archivo CSV "propiedades.csv"
-    en modo lectura. Recorrar dicho archivo y contar
+    en modo lectura. Recorrer dicho archivo y contar
     la cantidad de departamentos de 2 ambientes y la cantidad
     de departamentos de 3 ambientes disponibles.
     Al finalizar el proceso, imprima en pantalla los resultados.
     '''
+
+    with open(archivo, 'r') as csvfile:
+        data = list(csv.DictReader(csvfile)) # Guardo todas las filas como elementos de una lista.
+        for row in range(len(data)):
+            ambientes = data[row].get('ambientes')
+            if ambientes == '2':
+                cant_dpto_2ambientes += 1
+            elif ambientes == '3':
+                cant_dpto_3ambientes += 1
+
+    print('\nHay {} de Departamentos que son de 2 Ambientes.'.format(cant_dpto_2ambientes))
+    print('Hay {} de Departamentos que son de 3 Ambientes.\n\n'.format(cant_dpto_3ambientes))
 
 
 def ej4():
@@ -165,7 +180,7 @@ def ej5():
 if __name__ == '__main__':
     print("\n\n\nBienvenidos a otra clase de Inove con Python:\n\n")
     #ej1()
-    ej2()
-    #ej3()
+    #ej2()
+    ej3()
     #ej4()
     #ej5()
