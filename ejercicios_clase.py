@@ -73,18 +73,17 @@ def ej2():
     al final del proceso el valor.
     '''
 
-    cant_lineas = 0
     fi = open('notas.txt', 'r')
     fo = open('copia_notas.txt', 'w')
 
     for line in fi:
         fo.writelines(line)
         #fo.write(line)     # Otra Forma
-        cant_lineas += 1
+        cantidad_lineas += 1
 
     fi.close()
     fo.close()
-    print('La Cantidad de Lineas que se Copiaron es: {}\n\n'.format(cant_lineas))
+    print('La Cantidad de Lineas que se Copiaron es: {}\n\n'.format(cantidad_lineas))
 
 
 def ej3():
@@ -152,9 +151,12 @@ def ej4():
 def ej5():
     # Ejercicios con archivos CSV
     inventario = {'Fruta Verdura': 'manzana', 'Cantidad': 10}
+    nombre_archivo = 'inventario.csv'
+    header = ['Fruta Verdura', 'Cantidad']
+    fruta_verdura = ''
 
     '''
-    Parecido al el ejercicio anterior, genere un archivo CSV
+    Parecido al ejercicio anterior: genere un archivo CSV
     (abrir un archivo CSV como escritura) que posea las siguientes
     columnas:
     1) 'Fruta Verdura'
@@ -183,16 +185,32 @@ def ej5():
     '''
     # Recuerde crear el header correspondiente con "writeheader", el cual
     # se debe especificar al abrir el archivo.
+    with open(nombre_archivo, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=header)
+        writer.writeheader()
+        writer.writerow(inventario)
 
     # Bucle....
+        while fruta_verdura != 'FIN':
+            print('\n\nLa Fruta y Stock Ingresado es: {}'.format(inventario))
+            print('\n\nIngrese el Nombre de una Fruta/Verdura o Ingrese "FIN" para Salir del Programa:')
+            fruta_verdura = str(input('Luego Presione Enter para Continuar: '))
+
+            if fruta_verdura != 'FIN':          
+                stock = int(input('Ingrese Ahora el Stock de "{}" y Presione Enter Para Continuar: '.format(fruta_verdura)))
+                inventario[header[0]] = fruta_verdura
+                inventario[header[1]] = stock
+                writer.writerow(inventario)
+            else:
+                print('\n\nUsted ha Salido del Programa.\n\n')
 
     # writer.writerow({'Fruta Verdura': ....., 'Cantidad': ....})
 
 
 if __name__ == '__main__':
     print("\n\n\nBienvenidos a otra clase de Inove con Python:\n\n")
-    #ej1()
-    #ej2()
-    #ej3()
+    ej1()
+    ej2()
+    ej3()
     ej4()
-    #ej5()
+    ej5()
