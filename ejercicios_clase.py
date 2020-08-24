@@ -90,7 +90,6 @@ def ej2():
 def ej3():
     # Ejercicios con archivos CSV
     archivo = 'propiedades.csv'
-    cantidad_filas = 0
     cant_dpto_2ambientes = 0
     cant_dpto_3ambientes = 0
     '''
@@ -117,6 +116,8 @@ def ej3():
 def ej4():
     # Ejercicios con diccionarios
     inventario = {'manzanas': 6}
+    fruta_verdura = 'manzanas'
+    stock = 0
 
     '''
     Realice un programa que pida por consola
@@ -135,6 +136,17 @@ def ej4():
     # En el bucle realizar:
     # Generar y completar el diccionario con las frutas y cantidades
     # ingresadas por consola hasta ingresar la palabra "FIN"
+
+    while fruta_verdura != 'FIN':
+        print('\n\nEl Inventario Hasta el Momento es: {}'.format(inventario))
+        print('\n\nIngrese el Nombre de una Fruta/Verdura o Ingrese "FIN" para Salir del Programa:')
+        fruta_verdura = str(input('Luego Presione Enter para Continuar: '))
+
+        if fruta_verdura != 'FIN':          
+            stock = int(input('Ingrese Ahora el Stock de "{}" y Presione Enter Para Continuar: '.format(fruta_verdura)))
+            inventario[fruta_verdura] = stock
+        else:
+            print('\n\nUsted ha Salido del Programa.\n\n')
 
 
 def ej5():
@@ -181,6 +193,6 @@ if __name__ == '__main__':
     print("\n\n\nBienvenidos a otra clase de Inove con Python:\n\n")
     #ej1()
     #ej2()
-    ej3()
-    #ej4()
+    #ej3()
+    ej4()
     #ej5()
