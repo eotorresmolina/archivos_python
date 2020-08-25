@@ -151,6 +151,7 @@ def ej4():
 def ej5():
     # Ejercicios con archivos CSV
     inventario = {'Fruta Verdura': 'manzana', 'Cantidad': 10}
+    gondola = {}
     nombre_archivo = 'inventario.csv'
     header = ['Fruta Verdura', 'Cantidad']
     fruta_verdura = ''
@@ -188,12 +189,13 @@ def ej5():
     with open(nombre_archivo, 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=header)
         writer.writeheader()
-        writer.writerow(inventario)
+
+    with open(nombre_archivo, 'a', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=header)
 
     # Bucle....
         while fruta_verdura != 'FIN':
-            print('\n\nLa Fruta y Stock Ingresado es: {}'.format(inventario))
-            print('\n\nIngrese el Nombre de una Fruta/Verdura o Ingrese "FIN" para Salir del Programa:')
+            print('\n\nIngrese el Nombre de una Fruta/Verdura o Ingrese "FIN" para Salir del Programa.')
             fruta_verdura = str(input('Luego Presione Enter para Continuar: '))
 
             if fruta_verdura != 'FIN':          
@@ -201,8 +203,11 @@ def ej5():
                 inventario[header[0]] = fruta_verdura
                 inventario[header[1]] = stock
                 writer.writerow(inventario)
+                gondola[fruta_verdura] = stock
             else:
                 print('\n\nUsted ha Salido del Programa.\n\n')
+
+    print('\n\nLa Fruta y Stock Ingresado es: {}'.format(gondola))
 
     # writer.writerow({'Fruta Verdura': ....., 'Cantidad': ....})
 
