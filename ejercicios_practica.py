@@ -16,6 +16,9 @@ __email__ = "emmaotm@gmail.com"
 __version__ = "1.2"
 
 
+import csv
+
+
 def ej1():
     print("Cuenta caracteres.\n\n")
     cantidad_letras = 0
@@ -77,8 +80,9 @@ def ej2():
 
 
 def ej3():
-    print("Escrutinio de los alquileres de Capital Federal")
-    cantidad_ambientes = 2
+    print("\n\nEscrutinio de los Alquileres de Capital Federal:\n\n")
+    cantidad_ambientes = None
+    precios = []
 
     '''
     Realizar un prorgrama que solicite la cantidad de
@@ -93,6 +97,29 @@ def ej3():
     4) Obtener el mínimo valor de alquiler en "pesos"
     de la cantidad de ambientes deseados.
     '''
+
+    cantidad_ambientes = int(input('Ingrese la Cantidad de Ambientes de los Alquileres: '))
+
+    with open('propiedades.csv', 'r') as csvfile:
+        data = list(csv.DictReader(csvfile))
+
+        for row in range(len(data)):
+            if data[row].get('ambientes') == str(cantidad_ambientes):
+                if data[row].get('moneda') == 'ARS':
+                    precios.append(float(data[row].get('precio')))
+  
+    try:
+        promedio = sum(precios) / len(precios)
+        max_valor = max(precios)
+        min_valor = min(precios)
+
+        print('\n1-La Cantidad de Alquileres de Departamentos de {} Ambientes Disponibles es: {}.'.format(cantidad_ambientes, len(precios)))
+        print('2-El Promedio del Valor de los Alquileres en Pesos ($) es: {}'.format(promedio))
+        print('3-El Máximo Valor de Alquileres en Pesos ($) es: {}'.format(max_valor))
+        print('4-El Mínimo Valor de Alquileres en Pesos ($) es: {}\n\n'.format(min_valor))
+
+    except ZeroDivisionError:
+        print('\n1-La Cantidad de Alquileres de Departamentos de {} Ambientes Disponibles es: {}.'.format(cantidad_ambientes, len(precios)))
 
 
 def ejercicio_extra():
@@ -180,6 +207,6 @@ def ejercicio_extra():
 if __name__ == '__main__':
     print("\n\nEjercicios de práctica:\n\n")
     #ej1()
-    ej2()
-    #ej3()
+    #ej2()
+    ej3()
     #ejercicio_extra()
