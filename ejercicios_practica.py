@@ -35,13 +35,17 @@ def ej1():
             cantidad_lineas += 1
             print('La Cantidad de Caracteres que Tiene la Línea {} es: {} '.format(cantidad_lineas, len(line)))
             cantidad_letras += len(line)
-            
+
+    cantidad_letras += (cantidad_lineas-1)   
     print('\nLa Cantidad de Caracteres que Tiene el Archivo "{}" es: {}\n\n'.format(nombre_archivo, cantidad_letras))
 
 
 def ej2():
-    print("Transcribir!")
+    print("Transcribir!\n\n")
     cantidad_letras = 0
+    nombre_archivo = 'transcribir.txt'
+    texto_ingresado = None
+
     '''
     Deberá abrir un archivo txt para escritura (un archivo nuevo)
     Luego mediante un bucle deberá pedir por consola que
@@ -58,6 +62,18 @@ def ej2():
     NOTA: Recuerde agregar el salto de línea "\n" a cada entrada
     de texto de la consola antes de copiar la archivo.
     '''
+
+    fo = open(nombre_archivo, 'w')
+
+    print('A Continuación Deberá Ingresar un Texto o Presionar Enter para Salir.\n')
+    while ((texto_ingresado == None) or (texto_ingresado != '')):
+        texto_ingresado = str(input('Ingrese el Texto que Desee: '))
+        cantidad_letras += len(texto_ingresado)
+        fo.write(texto_ingresado + '\n')
+
+    fo.close()
+
+    print('\nLa Cantidad de Caracteres que se Ingresaron en Total es: {}\n\n'.format(cantidad_letras))
 
 
 def ej3():
@@ -163,7 +179,7 @@ def ejercicio_extra():
 
 if __name__ == '__main__':
     print("\n\nEjercicios de práctica:\n\n")
-    ej1()
-    #ej2()
+    #ej1()
+    ej2()
     #ej3()
     #ejercicio_extra()
