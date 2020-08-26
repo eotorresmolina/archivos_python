@@ -11,14 +11,16 @@ Programa creado para que practiquen los conocimietos
 adquiridos durante la semana
 '''
 
-__author__ = "Inove Coding School"
-__email__ = "alumnos@inove.com.ar"
+__author__ = "Torres Molina Emmanuel O."
+__email__ = "emmaotm@gmail.com"
 __version__ = "1.2"
 
 
 def ej1():
-    print("Cuenta caracteres")
+    print("Cuenta caracteres.\n\n")
     cantidad_letras = 0
+    cantidad_lineas = 0
+    nombre_archivo = 'texto.txt'
 
     '''
     Realizar un prorgrama que cuenta la cantidad de caracteres
@@ -28,6 +30,13 @@ def ej1():
     Debe realizar la sumatoria total de la cantidad de caracteres de todas
     las líneas para obtener el total del archivo e imprimirlo en pantalla
     '''
+    with open(nombre_archivo, 'r') as fi:
+        for line in fi:
+            cantidad_lineas += 1
+            print('La Cantidad de Caracteres que Tiene la Línea {} es: {} '.format(cantidad_lineas, len(line)))
+            cantidad_letras += len(line)
+            
+    print('\nLa Cantidad de Caracteres que Tiene el Archivo "{}" es: {}\n\n'.format(nombre_archivo, cantidad_letras))
 
 
 def ej2():
@@ -153,8 +162,8 @@ def ejercicio_extra():
 
 
 if __name__ == '__main__':
-    print("Ejercicios de práctica")
-    #ej1()
+    print("\n\nEjercicios de práctica:\n\n")
+    ej1()
     #ej2()
     #ej3()
     #ejercicio_extra()
