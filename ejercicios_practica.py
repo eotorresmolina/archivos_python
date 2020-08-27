@@ -123,7 +123,7 @@ def ej3():
 
 
 def ejercicio_extra():
-    print("Ahora sí! buena suerte :)")
+    print("Ahora sí! buena suerte :)\n\n")
 
     '''
     Para poder realizar este ejercicio deberán descargarse el
@@ -202,11 +202,204 @@ def ejercicio_extra():
     de Python que resuelva este problema.
 
     '''
+    nombre_archivo = '2019 Ironman World Championship Results.csv'
+
+    # Tiempos para la División MPRO:
+    times_swim_mpro = []
+    times_bike_mpro = []
+    times_run_mpro = []
+
+    # Tiempos para la División M45-49:
+    times_swim_m4549 = []
+    times_bike_m4549 = []
+    times_run_m4549 = []
+
+    # Tiempos para la División M25-29:
+    times_swim_m2529 = []
+    times_bike_m2529 = []
+    times_run_m2529 = []
+
+    # Tiempos para la División M18-24:
+    times_swim_m1824 = []
+    times_bike_m1824 = []
+    times_run_m1824 = []
+
+    with open(nombre_archivo, 'r') as csvfile:
+        data = list(csv.DictReader(csvfile))
+        
+        for row in range(len(data)):
+
+            # División MPRO:
+            if data[row].get('Division') == 'MPRO':
+                time = data[row].get('Swim').split(sep=':')     # DEPORTE: Swim
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_swim_mpro.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Bike').split(sep=':')     # DEPORTE: Bike
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_bike_mpro.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Run').split(sep=':')      # DEPORTE: Run
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_run_mpro.append(cant_seconds)
+                except ValueError:
+                    pass
+
+
+            # División M45-49
+            elif data[row].get('Division') == 'M45-49':
+                time = data[row].get('Swim').split(sep=':')     # DEPORTE: Swim
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_swim_m4549.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Bike').split(sep=':')     # DEPORTE: Bike
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_bike_m4549.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Run').split(sep=':')      # DEPORTE: Run
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_run_m4549.append(cant_seconds)
+                except ValueError:
+                    pass
+
+
+            # División: M25-29
+            elif data[row].get('Division') == 'M25-29': 
+                time = data[row].get('Swim').split(sep=':')     # DEPORTE: Swim
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_swim_m2529.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Bike').split(sep=':')     # DEPORTE: Bike
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_bike_m2529.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Run').split(sep=':')      # DEPORTE: Run
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_run_m2529.append(cant_seconds)
+                except ValueError:
+                    pass
+
+            
+            # División: M18-24
+            elif data[row].get('Division') == 'M18-24':
+                time = data[row].get('Swim').split(sep=':')     # DEPORTE: Swim
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_swim_m1824.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Bike').split(sep=':')     # DEPORTE: Bike
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_bike_m1824.append(cant_seconds)
+                except ValueError:
+                    pass
+
+                time = data[row].get('Run').split(sep=':')      # DEPORTE: Run
+                try:
+                    cant_seconds = int(time[0]) * 3600 + int(time[1]) * 60 + int(time[2])
+                    times_run_m1824.append(cant_seconds)
+                except ValueError:
+                    pass
+
+    # División: MPRO:
+    promedio_tiempo_swim = sum(times_swim_mpro) / len(times_swim_mpro)
+    promedio_tiempo_bike = sum(times_swim_mpro) / len(times_swim_mpro)
+    promedio_tiempo_run = sum(times_swim_mpro) / len(times_swim_mpro)
+
+    print('División: "MPRO":\n')
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(max(times_swim_mpro)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(min(times_swim_mpro)))
+    print('3-El Tiempo Promedio en la Categoría "Swim" es: {} segundos.\n'.format(promedio_tiempo_swim))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(max(times_bike_mpro)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(min(times_bike_mpro)))
+    print('3-El Tiempo Promedio en la Categoría "Bike" es: {} segundos.\n'.format(promedio_tiempo_bike))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(max(times_run_mpro)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(min(times_run_mpro)))
+    print('3-El Tiempo Promedio en la Categoría "Run" es: {} segundos.\n'.format(promedio_tiempo_run))
+
+    # División: M45-49:
+    promedio_tiempo_swim = sum(times_swim_m4549) / len(times_swim_m4549)
+    promedio_tiempo_bike = sum(times_swim_m4549) / len(times_swim_m4549)
+    promedio_tiempo_run = sum(times_swim_m4549) / len(times_swim_m4549)
+
+    print('División: "M45-49":\n')
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(max(times_swim_m4549)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(min(times_swim_m4549)))
+    print('3-El Tiempo Promedio en la Categoría "Swim" es: {} segundos.\n'.format(promedio_tiempo_swim))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(max(times_bike_m4549)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(min(times_bike_m4549)))
+    print('3-El Tiempo Promedio en la Categoría "Bike" es: {} segundos.\n'.format(promedio_tiempo_bike))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(max(times_run_m4549)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(min(times_run_m4549)))
+    print('3-El Tiempo Promedio en la Categoría "Run" es: {} segundos.\n'.format(promedio_tiempo_run))
+
+    # División: M25-29:
+    promedio_tiempo_swim = sum(times_swim_m2529) / len(times_swim_m2529)
+    promedio_tiempo_bike = sum(times_swim_m2529) / len(times_swim_m2529)
+    promedio_tiempo_run = sum(times_swim_m2529) / len(times_swim_m2529)
+
+    print('División: "M2524":\n')
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(max(times_swim_m2529)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(min(times_swim_m2529)))
+    print('3-El Tiempo Promedio en la Categoría "Swim" es: {} segundos.\n'.format(promedio_tiempo_swim))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(max(times_bike_m2529)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(min(times_bike_m2529)))
+    print('3-El Tiempo Promedio en la Categoría "Bike" es: {} segundos.\n'.format(promedio_tiempo_bike))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(max(times_run_m2529)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(min(times_run_m2529)))
+    print('3-El Tiempo Promedio en la Categoría "Run" es: {} segundos.\n'.format(promedio_tiempo_run))
+
+    # División: M18-24:
+    promedio_tiempo_swim = sum(times_swim_m1824) / len(times_swim_m1824)
+    promedio_tiempo_bike = sum(times_swim_m1824) / len(times_swim_m1824)
+    promedio_tiempo_run = sum(times_swim_m1824) / len(times_swim_m1824)
+
+    print('División: "M18-24":\n')
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(max(times_swim_m1824)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Swim" es: {} segundos.'.format(min(times_swim_m1824)))
+    print('3-El Tiempo Promedio en la Categoría "Swim" es: {} segundos.\n'.format(promedio_tiempo_swim))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(max(times_bike_m1824)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Bike" es: {} segundos.'.format(min(times_bike_m1824)))
+    print('3-El Tiempo Promedio en la Categoría "Bike" es: {} segundos.\n'.format(promedio_tiempo_bike))
+
+    print('1-El Tiempo Máximo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(max(times_run_m1824)))
+    print('2-El Tiempo Mínimo Hecho por un Competidor en la Categoría "Run" es: {} segundos.'.format(min(times_run_m1824)))
+    print('3-El Tiempo Promedio en la Categoría "Run" es: {} segundos.\n\n\n'.format(promedio_tiempo_run))
 
 
 if __name__ == '__main__':
     print("\n\nEjercicios de práctica:\n\n")
-    #ej1()
-    #ej2()
+    ej1()
+    ej2()
     ej3()
-    #ejercicio_extra()
+    ejercicio_extra()
